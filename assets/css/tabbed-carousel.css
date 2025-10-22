@@ -1,0 +1,60 @@
+/* ظرف کلی تب‌دار */
+.shopido-tpc { direction: rtl; }
+
+/* تب‌ها */
+.shopido-tpc .shopido-tpc__tabs{
+  display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:14px;
+}
+.shopido-tpc .shopido-tpc__tab{
+  appearance:none; border:1px solid #e5e7eb; background:#fff; color:#111827; cursor:pointer;
+  padding:8px 14px; border-radius:999px; font-weight:700; font-size:14px;
+}
+.shopido-tpc .shopido-tpc__tab.is-active{ background:#111827; color:#fff; border-color:#111827; }
+
+/* پنل‌ها */
+.shopido-tpc .shopido-tpc__panel{ display:none; position:relative; }
+.shopido-tpc .shopido-tpc__panel.is-active{ display:block; }
+
+/* سوایپر داخل پنل */
+.shopido-tpc .shopido-tpc__wrap{ overflow:hidden; }
+
+/* فلش‌ها و دات‌ها (لوکال به هر پنل) */
+.shopido-tpc .shopido-tpc__arrow{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:36px; height:36px; border-radius:10px;
+  background:#f3f4f6; border:1px solid #e5e7eb; box-shadow:0 2px 10px rgba(0,0,0,.06);
+  cursor:pointer; z-index:5;
+}
+.shopido-tpc .shopido-tpc__arrow.prev{ left:-12px; }
+.shopido-tpc .shopido-tpc__arrow.next{ right:-12px; }
+.shopido-tpc .shopido-tpc__arrow::before{
+  content:''; display:block; width:100%; height:100%; background:#374151;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M14 7l-5 5 5 5z'/%3E%3C/svg%3E") center/18px no-repeat;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M14 7l-5 5 5 5z'/%3E%3C/svg%3E") center/18px no-repeat;
+}
+.shopido-tpc .shopido-tpc__arrow.next::before{ transform:scaleX(-1); }
+
+.shopido-tpc .shopido-tpc__dots{ text-align:center; margin-top:10px; }
+
+/* کارت (همون استایل کارت فعلی‌ت) */
+.shopido-tpc .shopido-card{
+  background:#fff; padding:5px; border:1px solid #e5e7eb; border-radius:16px;
+  overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,.06);
+}
+.shopido-tpc .shopido-card__thumb{ display:block; width:100%; aspect-ratio: 1 / 1; overflow:hidden; }
+.shopido-tpc .shopido-card__img{ width:100%; height:100%; object-fit:cover; display:block; }
+.shopido-tpc .shopido-card__body{ padding:10px 0; }
+.shopido-tpc .shopido-card__title{ font-size:17px; line-height:1.5; margin:0 0 6px; }
+.shopido-tpc .shopido-card__price{ font-weight:700; margin-bottom:8px; color:#16a34a; }
+.shopido-tpc .shopido-card__btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:8px 12px; border-radius:999px; background:#16a34a; color:#fff; text-decoration:none;
+}
+
+/* شمارش‌گر ویژه */
+.shopido-tpc .shopido-card__countdown{
+  display:inline-flex; align-items:center; gap:6px;
+  font: 800 13px/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  color:#111827; background:#f3f4f6; border-radius:10px; padding:6px 10px; margin-bottom:8px;
+}
+.shopido-tpc .shopido-card__countdown b{ opacity:.35; }

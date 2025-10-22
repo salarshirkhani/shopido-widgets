@@ -1,0 +1,32 @@
+/* ===== Shopido Read More ===== */
+.shopido-rm{ position:relative; }
+.shopido-rm__content{
+  max-height: var(--srm-h, 180px);
+  overflow: hidden;
+  transition: max-height .35s ease;
+}
+.shopido-rm__fade{
+  position:absolute; left:0; right:0; bottom:44px; height:96px; pointer-events:none;
+  /* پیش‌فرض: از شفاف به رنگ پس‌زمینه صفحه */
+  background: linear-gradient(
+      to bottom,
+      rgba(255,255,255,0) 0%,
+      var(--srm-overlay, var(--shopido-bg, transparent)) 60%,
+      var(--srm-overlay, var(--shopido-bg, transparent)) 100%
+  );
+}
+.shopido-rm__toggle{
+  appearance:none; border:0; background:transparent; cursor:pointer;
+  display:flex; align-items:center; gap:8px; width:100%;
+  color:#374151; font-weight:700; padding:10px 0; margin-top:8px;
+}
+.shopido-rm__toggle.align-left{ justify-content:flex-start; }
+.shopido-rm__toggle.align-center{ justify-content:center; }
+.shopido-rm__toggle.align-right{ justify-content:flex-end; }
+
+.shopido-rm__icon{ transition: transform .25s ease; }
+
+/* حالت باز */
+.shopido-rm.is-open .shopido-rm__content{ max-height: 9999px; }
+.shopido-rm.is-open .shopido-rm__fade{ display:none; }
+.shopido-rm.is-open .shopido-rm__icon{ transform: rotate(180deg); }

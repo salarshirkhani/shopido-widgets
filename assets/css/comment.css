@@ -1,0 +1,110 @@
+/* ===== Shopido – Comments (RTL) ===== */
+:root{
+  --c-border:#e5e7eb;
+  --c-bg:#ffffff;
+  --c-bg-soft:#f8fafc;
+  --c-text:#0f172a;
+  --c-muted:#64748b;
+  --c-accent:#16a34a;
+  --c-danger:#ef4444;
+  --rd:14px;
+}
+
+#comments{ direction: rtl; color: var(--c-text); }
+#comments .comments-title{
+  font-weight: 900; font-size: clamp(18px,2.4vw,24px);
+  margin: 10px 0 14px;
+}
+
+/* لیست نظرات */
+.comment-list{ list-style:none; margin:0; padding:0; }
+.comment-list .comment{
+  border:1px solid var(--c-border);
+  border-radius: var(--rd);
+  background: var(--c-bg);
+  padding:14px; margin: 0 0 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.04);
+}
+.comment-list .children{ list-style:none; margin:10px 22px 0 0; padding:0; border-right:2px solid #eef2f7; }
+.comment-list .children .comment{ background:#fcfdff; }
+
+/* هدر نظر */
+.comment .comment-meta{
+  display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px;
+}
+.comment .comment-author{
+  display:flex; align-items:center; gap:10px; font-weight:800; color:var(--c-text);
+}
+.comment .comment-author .avatar{
+  width:42px; height:42px; border-radius:50%; border:1px solid var(--c-border); box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+.comment .comment-metadata a{
+  color: var(--c-muted); font-size:13px; text-decoration:none;
+}
+.comment .comment-metadata a:hover{ color: var(--c-accent); }
+
+/* متن نظر */
+.comment .comment-content{ line-height:1.9; color:#1f2937; }
+.comment .comment-content p{ margin: 0 0 8px; }
+
+/* وضعیت در انتظار تایید */
+.comment-awaiting-moderation{
+  display:inline-block; background: color-mix(in srgb, var(--c-accent) 10%, white);
+  color:#065f46; padding:4px 8px; border-radius:8px; font-weight:700; margin-bottom:6px;
+}
+
+/* دکمه پاسخ/ویرایش */
+.comment .reply, .comment .edit-link{ margin-top:8px; }
+.comment .reply a, .comment .edit-link a{
+  display:inline-flex; align-items:center; gap:6px;
+  background: var(--c-bg-soft); border:1px solid var(--c-border);
+  padding:6px 10px; border-radius:10px; text-decoration:none; color:#111827; font-weight:800;
+  transition: transform .12s ease, filter .12s ease;
+}
+.comment .reply a:hover, .comment .edit-link a:hover{ filter: brightness(1.04); transform: translateY(-1px); }
+
+/* پیجر نظرات */
+.comment-navigation{ display:flex; justify-content:space-between; margin:12px 0; }
+.comment-navigation a{ color:var(--c-accent); font-weight:900; text-decoration:none; }
+
+/* — فرم ارسال نظر — */
+#respond{ margin-top:18px; border:1px solid var(--c-border); border-radius: var(--rd); background:var(--c-bg); padding:14px; }
+#reply-title{ font-weight:900; margin:0 0 8px; }
+#cancel-comment-reply-link{ font-size:13px; margin-right:6px; color:var(--c-danger); }
+
+.comment-form{ display:grid; gap:10px; }
+.comment-form .comment-notes{ color:var(--c-muted); font-size:13px; }
+.comment-form label{ font-weight:800; color:#334155; margin-bottom:4px; display:inline-block; }
+.comment-form p{ margin:0; }
+
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form input[type="url"],
+.comment-form textarea{
+  width:100%; border:1px solid var(--c-border); border-radius:10px; background:#fff;
+  padding:10px 12px; font-size:14px; outline:none; transition: box-shadow .15s ease, border-color .15s ease;
+}
+.comment-form textarea{ min-height:140px; resize: vertical; }
+.comment-form input:focus,
+.comment-form textarea:focus{
+  border-color: var(--c-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--c-accent) 20%, transparent);
+}
+
+/* چک باکس ذخیره نام/ایمیل */
+.comment-form-cookies-consent{
+  display:flex; align-items:center; gap:8px; font-size:13px; color:var(--c-muted);
+}
+.comment-form-cookies-consent input{ width:18px; height:18px; }
+
+/* دکمه ارسال */
+#submit, .form-submit input[type="submit"]{
+  appearance:none; border:0; border-radius:10px; background:var(--c-accent); color:#fff;
+  padding:10px 16px; font-weight:900; cursor:pointer; box-shadow:0 6px 18px rgba(22,163,74,.18);
+  transition: transform .12s ease, filter .12s ease;
+}
+#submit:hover{ filter:brightness(1.05); transform:translateY(-1px); }
+
+/* حالت‌های خطا/موفق (پیغام‌ها) */
+.comment-respond .error{ color:var(--c-danger); font-weight:800; }
+.logged-in-as a{ color:var(--c-accent); text-decoration:none; font-weight:800; }
