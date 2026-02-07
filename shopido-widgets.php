@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Shopido Widgets Pack
- * Description: مجموعه ویجت‌های المنتور + CPT استوری برای قالب شما.
+ * Description: elementor widgets pack
  * Version: 1.0.0
  * Author: Shopido
  * Text Domain: shopido-widgets-pack
