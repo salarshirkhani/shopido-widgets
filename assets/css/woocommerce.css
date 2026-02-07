@@ -1,0 +1,680 @@
+.mytheme-product-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    background: #fff;
+    transition: 0.3s;
+}
+.mytheme-product-card:hover {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+.mytheme-product-card .product-thumbnail img {
+    width: 100%;
+    border-radius: 8px;
+}
+.mytheme-product-card .product-info {
+    margin-top: 10px;
+}
+.mytheme-product-card .product-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+.mytheme-product-card .product-price {
+    color: #e74c3c;
+    margin-top: 5px;
+}
+/* ===== Shopido – Single Product ===== */
+:root{
+    --shopido-accent: var(--shopido-primary, #16a34a); 
+    --shopido-icon-size: 18px;   /* اندازه آیکن */
+    --shopido-icon-gap:  12px;   /* فاصله آیکن تا متن */
+    --shopido-success:#16a34a;
+    --shopido-error:#ef4444;
+    --shopido-info:#0ea5e9;
+    --shopido-radius:12px;
+    --shec-sticky-top: 20px; /* اگر ادمین‌بار داری، JS خودش جبران می‌کند */
+}
+
+.single-product .product .entry-summary{ text-align:right; }
+
+/* عنوان محصول */
+.single-product .product .product_title{
+  color:#115e59; /* سبز تیره دلنشین */
+  font-weight:900; font-size: clamp(22px, 2.6vw, 38px);
+  margin-bottom: 8px;
+}
+
+/* قیمت */
+.single-product .product .price{
+    display: flex;
+    align-items: flex-start;
+    gap: 0px;
+    flex-wrap: wrap;
+    margin: 10px 0 14px;
+    flex-direction: column;
+    align-content: flex-start;
+}
+.single-product .product .price del{
+  color:#94a3b8; opacity:1; text-decoration: line-through; font-weight:700;
+}
+.single-product .product .price ins{
+  color:var(--shopido-accent); text-decoration:none; font-weight:900;
+}
+
+/* خط جداکننده زیر دکمه‌ها */
+.shopido-divider{ height:1px; background:#e5e7eb; margin:18px 0; }
+
+/* --- کنترل تعداد +/− --- */
+.shopido-qty{
+  display:inline-flex; align-items:center; gap:0; border:1px solid #e5e7eb;
+  border-radius:14px; overflow:hidden; background:#fff;
+}
+.shopido-qty__btn{
+  width:38px; height:38px; display:grid; place-items:center; cursor:pointer;
+  background:#f3f4f6; border:0; font-size:18px; line-height:1; user-select:none;
+}
+.shopido-qty__btn:hover{ filter:brightness(1.03); }
+.shopido-qty input.qty{
+  width:60px; height:38px; border:0; text-align:center; font-weight:800; outline:none; background:#fff;
+}
+.shopido-qty input.qty::-webkit-outer-spin-button,
+.shopido-qty input.qty::-webkit-inner-spin-button{ -webkit-appearance: none; margin: 0; }
+.shopido-qty input.qty{ -moz-appearance: textfield; } /* FF */
+
+/* چیدمان دکمه‌های خرید */
+.single-product .product .cart{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+
+/* دکمه اضافه به سبد (پیش‌فرض ووکامرس) کمی گردتر شود */
+.single-product .product .single_add_to_cart_button{
+  border-radius:10px; padding:10px 16px; font-weight:700;
+}
+
+/* دکمه خرید فوری */
+.shopido-buy-now{
+    border-radius: 5px;
+    padding: 10px 19px;
+    font-weight: 900;
+    background: #43436f;
+    border: 0;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .08);
+}
+.single-product .product .single_add_to_cart_button {
+    border-radius: 5px;
+    padding: 10px 16px;
+    font-weight: 700;
+    border: none;
+    color: #fff;
+    background: #16a34a;
+    font-size: 18px;
+}
+
+.single-product .product .single_add_to_cart_button,
+.shopido-buy-now{
+  position: relative;
+  padding-right: calc(var(--shopido-icon-size) + var(--shopido-icon-gap) + 12px); /* 12px = پدینگ پایه متن */
+}
+
+/* عنصر آیکن */
+.single-product .product .single_add_to_cart_button::before,
+.shopido-buy-now::before{
+  content: "";
+  position: absolute;
+  right: 12px;                      /* چسبیده به راست (RTL) */
+  top: 50%;
+  width: var(--shopido-icon-size);
+  height: var(--shopido-icon-size);
+  transform: translateY(-50%);
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: .95;
+}
+
+/* آیکنِ سبد خرید برای دکمه سبز ووکامرس */
+.single-product .product .single_add_to_cart_button::before{
+  /* SVG سفید؛ اگر رنگ دکمه عوض شد همچنان خواناست */
+  background-image: url("data:image/svg+xml;utf8,\
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'>\
+    <path d='M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.17 14h9.91a2 2 0 0 0 1.92-1.47l1.84-6.53A1 1 0 0 0 20.89 4H6.21l-.3-1.17A1 1 0 0 0 4.94 2H3a1 1 0 1 0 0 2h1.28l2.1 8.17A2.99 2.99 0 0 0 7.17 14z'/>\
+  </svg>");
+}
+
+/* آیکنِ خرید فوری (صاعقه) برای دکمه بنفش */
+.shopido-buy-now::before{
+  background-image: url("data:image/svg+xml;utf8,\
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'>\
+    <path d='M13 3L4 14h6l-1 7 9-11h-6l1-7z'/>\
+  </svg>");
+}
+
+/* هاور (اختیاری) – کمی روشن‌تر شدن آیکن */
+.single-product .product .single_add_to_cart_button:hover::before,
+.shopido-buy-now:hover::before{
+  opacity: 1;
+}
+
+/* ===== Hover Effects for Buttons ===== */
+.single-product .product .single_add_to_cart_button,
+.shopido-buy-now {
+  transition: all 0.3s ease, transform 0.2s ease;
+}
+
+/* هاور: رنگ کمی روشن‌تر + تکون خوردن */
+.single-product .product .single_add_to_cart_button:hover {
+  background-color: #22c55e; /* سبز روشن‌تر */
+  transform: translateY(-2px) scale(1.03);
+}
+
+.shopido-buy-now:hover {
+  background-color: #565694; /* بنفش روشن‌تر */
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* برای آیکن هم انیمیشن کوچیک بذاریم */
+.single-product .product .single_add_to_cart_button:hover::before,
+.shopido-buy-now:hover::before {
+  transform: translateY(-50%) rotate(-5deg) scale(1.1);
+  transition: transform 0.25s ease;
+}
+
+/* اگر در لیست محصولات هم همین دکمه‌ها را داری، می‌تونی مشابه زیر اعمال کنی: */
+.woocommerce a.button.add_to_cart_button{
+  position: relative;
+  padding-right: calc(var(--shopido-icon-size) + var(--shopido-icon-gap) + 12px);
+}
+.woocommerce a.button.add_to_cart_button::before{
+  content: "";
+  position: absolute; right: 12px; top: 50%;
+  width: var(--shopido-icon-size); height: var(--shopido-icon-size);
+  transform: translateY(-50%);
+  background-repeat: no-repeat; background-size: contain;
+  background-image: url("data:image/svg+xml;utf8,\
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'>\
+    <path d='M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.17 14h9.91a2 2 0 0 0 1.92-1.47l1.84-6.53A1 1 0 0 0 20.89 4H6.21l-.3-1.17A1 1 0 0 0 4.94 2H3a1 1 0 1 0 0 2h1.28l2.1 8.17A2.99 2.99 0 0 0 7.17 14z'/>\
+  </svg>");
+}
+.shopido-buy-now:hover{ filter:contrast(1.05) brightness(1.03); }
+
+/* --- باکس اشتراک‌گذاری --- */
+.shopido-share{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  background:#f8fafc; border:1px dashed #d1d5db; border-radius:10px;
+  padding:12px 14px; color:#475569;
+}
+.shopido-share__title{ font-weight:800; }
+.shopido-share__icons{ display:flex; align-items:center; gap:10px; }
+.shopido-share__icons a, .shopido-share__copy{
+  width:36px; height:36px; display:grid; place-items:center; border-radius:8px;
+  background:#eef2f7; color:#334155; text-decoration:none; font-size:16px;
+}
+.shopido-share__copy{ cursor:pointer; }
+
+/* تب‌های ووکامرس */
+.woocommerce div.product .woocommerce-tabs ul.tabs{
+  padding:0; border-bottom:1px solid #e5e7eb;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li{
+  border:0; background:transparent; margin:0 0 0 24px; padding:0;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li a{
+  padding:10px 0; font-weight:900; color:#334155; position:relative;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active a{
+  color:var(--shopido-accent);
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active a:after{
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:3px;
+  background:var(--shopido-accent); border-radius:2px;
+}
+/* ===== توضیحات محصول ===== */
+.woocommerce div.product .product_description {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+  margin-top: 20px;
+  font-family: 'IRANSans', sans-serif;
+}
+
+
+/* رنگ فعال */
+.woocommerce div.product .product_description .tabs li.active {
+  border-bottom: 2px solid #16a34a;
+  color: #16a34a;
+}
+
+/* افکت hover */
+.woocommerce div.product .product_description .tabs li:hover {
+  color: #16a34a;
+}
+
+/* باکس محتوا */
+.woocommerce div.product .product_description .tabs_content {
+  display: none;
+  padding-top: 20px;
+}
+
+.woocommerce div.product .product_description .tabs_content.active {
+  display: block;
+  font-size: 14px;
+  color: #334155;
+  margin-top: 10px;
+}
+
+/* انیمیشن برای باز شدن */
+.woocommerce div.product .product_description .tabs_content {
+  transition: all 0.3s ease-in-out;
+}
+
+.woocommerce div.product .product_description .tabs_content p {
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.wc-tabs{
+    display: flex;
+    font-size: 16px;
+    justify-content: center;
+    font-weight: 700;
+    text-align: center;
+    padding: 10px 20px !important;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    list-style: none;
+}
+/* ظرف کلی خطاها (لیست) */
+.woocommerce-notices-wrapper,
+.woocommerce-NoticeGroup,
+.woocommerce-error,
+.woocommerce-message,
+.woocommerce-info{
+  direction: rtl;
+}
+
+/* پایه استایل همه اعلان‌ها */
+.woocommerce .woocommerce-error,
+.woocommerce .woocommerce-message,
+.woocommerce .woocommerce-info{
+  position: relative;
+  padding: 14px 48px 14px 16px; /* فضا برای آیکن سمت راست */
+  margin: 14px 0;
+  border-radius: var(--shopido-radius);
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,.05);
+  list-style: none; /* حذف بولت‌ها */
+  font-weight: 700;
+}
+
+/* آیکن سمت راست */
+.woocommerce .woocommerce-error::before,
+.woocommerce .woocommerce-message::before,
+.woocommerce .woocommerce-info::before{
+  content:"";
+  position:absolute;
+  right: 14px; top: 50%;
+  width: 22px; height: 22px;
+  transform: translateY(-50%);
+  background-repeat:no-repeat; background-size:contain;
+  opacity:.95;
+}
+
+/* موفق */
+.woocommerce .woocommerce-message{
+  border-color: color-mix(in srgb, var(--shopido-success) 25%, #e5e7eb);
+  background: color-mix(in srgb, var(--shopido-success) 7%, #ffffff);
+  color:#065f46;
+}
+.woocommerce .woocommerce-message::before{
+  /* تیک */
+  background-image:url("data:image/svg+xml;utf8,\
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'><path d='M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z'/></svg>");
+}
+
+/* خطا */
+.woocommerce .woocommerce-error{
+  border-color: color-mix(in srgb, var(--shopido-error) 25%, #e5e7eb);
+  background: color-mix(in srgb, var(--shopido-error) 7%, #ffffff);
+  color:#7f1d1d;
+}
+.woocommerce .woocommerce-error::before{
+  /* اخطار */
+  background-image:url("data:image/svg+xml;utf8,\
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ef4444'><path d='M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2V9h2v5z'/></svg>");
+}
+
+/* اطلاع */
+.woocommerce .woocommerce-info{
+  border-color: color-mix(in srgb, var(--shopido-info) 25%, #e5e7eb);
+  background: color-mix(in srgb, var(--shopido-info) 7%, #ffffff);
+  color:#0c4a6e;
+}
+.woocommerce .woocommerce-info::before{
+  /* آیکن i */
+  background-image:url("data:image/svg+xml;utf8,\
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230ea5e9'><path d='M11 10h2v7h-2zm0-3h2v2h-2z'/></svg>");
+}
+
+/* آیتم‌های لیست خطا (Checkout/Forms) */
+.woocommerce .woocommerce-error li{
+  margin: 6px 0 0;
+  padding: 0;
+}
+
+/* لینک‌ها داخل اعلان‌ها */
+.woocommerce .woocommerce-message a,
+.woocommerce .woocommerce-error a,
+.woocommerce .woocommerce-info a{
+  color: inherit;
+  text-decoration: underline;
+  font-weight: 900;
+}
+
+/* افکت هاور و انیمیشن ورود */
+.woocommerce .woocommerce-message,
+.woocommerce .woocommerce-error,
+.woocommerce .woocommerce-info{
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+  animation: shopidoNoticeIn .25s ease both;
+}
+.woocommerce .woocommerce-message:hover,
+.woocommerce .woocommerce-error:hover,
+.woocommerce .woocommerce-info:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.08);
+  filter: brightness(1.02);
+}
+@keyframes shopidoNoticeIn{
+  from{ transform: translateY(6px); opacity: .0; }
+  to{ transform: translateY(0); opacity: 1; }
+}
+
+/* ===== اعتبارسنجی فیلدها (Checkout) ===== */
+.woocommerce form .form-row.woocommerce-invalid input.input-text,
+.woocommerce form .form-row.woocommerce-invalid select,
+.woocommerce form .form-row.woocommerce-invalid .select2-selection{
+  border-color: var(--shopido-error) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--shopido-error) 20%, transparent);
+}
+.woocommerce form .form-row.woocommerce-validated input.input-text,
+.woocommerce form .form-row.woocommerce-validated select,
+.woocommerce form .form-row.woocommerce-validated .select2-selection{
+  border-color: var(--shopido-success) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--shopido-success) 18%, transparent);
+}
+
+/* فاصله با محتوای اطراف */
+.woocommerce .cart-empty,
+.woocommerce .return-to-shop,
+.woocommerce-notices-wrapper{
+  margin-bottom: 16px;
+}
+
+#tab-description{
+  background: #f9fafb;
+  border: none;
+  border-radius: 14px;
+  padding: 24px;
+  margin: 30px 0;
+  box-shadow: 0 6px 20px rgba(0,0,0,.06); 
+}
+
+/* بخش نقد و بررسی‌ها */
+#reviews {
+  background: #f9fafb;
+  border-radius: 14px;
+  padding: 24px;
+  margin: 30px 0;
+  box-shadow: 0 6px 20px rgba(0,0,0,.06);
+}
+
+#reviews h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 8px;
+}
+
+/* ستاره‌های واقعی به‌جای متن */
+#reviews .stars {
+  display: flex;
+  gap: 4px;
+  margin: 10px 0;
+}
+#reviews .stars a {
+    font-size: 15px;
+    padding: 0px 10px;
+    color: #d1d5db;
+    text-decoration: none;
+    transition: color .2s;
+}
+#reviews .stars a:hover,
+#reviews .stars a.active {
+  color: #f59e0b; /* طلایی */
+}
+#reviews .stars a::before {
+  content: "★"; /* ستاره واقعی */
+}
+
+/* باکس متن */
+#reviews textarea {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.6;
+  background: #fff;
+  resize: vertical;
+  min-height: 120px;
+  transition: border-color .2s, box-shadow .2s;
+}
+#reviews textarea:focus {
+  border-color: #239E3E;
+  box-shadow: 0 0 0 3px rgba(35,158,62,.15);
+  outline: none;
+}
+
+/* دکمه ثبت */
+#reviews input[type="submit"] {
+  background: #239E3E;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 14px;
+  font-weight: 600;
+  transition: background .2s, transform .1s;
+}
+#reviews input[type="submit"]:hover {
+  background: #1d7f32;
+  transform: translateY(-1px);
+}
+
+
+
+/* استایل بخش فیلتر اینلاین بالای محصولات */
+.shop-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.shop-filters select,
+.shop-filters .filter-btn {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 14px;
+  background: #fff;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.shop-filters select:hover,
+.shop-filters .filter-btn:hover {
+  border-color: #239E3E;
+  color: #239E3E;
+}
+
+/* لیست محصولات شبکه‌ای مدرن */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
+  gap: 20px;
+}
+.products-grid .product {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,.05);
+  transition: transform .2s;
+}
+.products-grid .product:hover {
+  transform: translateY(-4px);
+}
+.products-grid .product img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+.products-grid .product .title {
+  font-weight: bold;
+  font-size: 15px;
+  padding: 8px;
+}
+.products-grid .product .price {
+  padding: 0 8px 12px;
+  color: #239E3E;
+  font-weight: bold;
+}
+/* فیلتر اینلاین – تمام عرض */
+.shec-shop-filters {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* دکمه‌ها برن سمت چپ، فیلترها خودشون پخش بشن */
+.shec-shop-filters {
+  justify-content: flex-start;   /* فیلترها از راست بچسبن */
+}
+.shec-shop-filters .sf-actions {
+  margin-inline-start: auto;     /* دکمه‌ها برن ته خط */
+}
+
+/* خود نوار فیلتر استیکی شود */
+.shec-shop-filters{
+  position: sticky;
+  top: 10px;
+  z-index: 1000;
+  background: rgba(249,250,251,.95); /* همون bg قبلی با کمی شفافیت */
+  backdrop-filter: saturate(160%) blur(6px);
+  -webkit-backdrop-filter: saturate(160%) blur(6px);
+}
+
+/* وقتی چسبید، سایه ظریف داشته باشد (با کلاس JS) */
+.shec-shop-filters.is-stuck{
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+
+/* — موبایل: همه چیز تو یک خط و فقط خود نوار، اسکرول افقی بگیرد — */
+@media (max-width: 768px){
+  .shec-shop-filters{
+    display: flex;            /* مطمئن می‌شیم فلکس است */
+    flex-wrap: nowrap !important;        /* نذار بشکنه */
+    overflow-x: auto !important;         /* فقط خود فیلتر اسکرول افقی داشته باشه */
+    overflow-y: hidden !important;
+    justify-content: center !important;
+    gap: 10px;
+    scrollbar-width: thin;    /* فایرفاکس */
+    -webkit-overflow-scrolling: touch; /* اسکرول نرم iOS */
+  }
+  /* هر آیتم یه باکس فشرده و بدون شکستن خط */
+  .shec-shop-filters .sf-field,
+  .shec-shop-filters .sf-actions,
+  .shec-shop-filters select,
+  .shec-shop-filters input[type="number"],
+  .shec-shop-filters input[type="text"],
+  .shec-shop-filters .shec-btn,
+  .shec-shop-filters a.shec-btn{
+    flex: 0 0 auto;           /* اجازه نده کش بیاد یا بشکنه */
+    white-space: nowrap;
+  }
+
+  /* کوچیک‌سازی فیلدها برای جا شدن بهتر */
+  .shec-shop-filters select,
+  .shec-shop-filters input[type="number"],
+  .shec-shop-filters input[type="text"]{
+    min-width: 120px;         /* می‌تونی کمترش هم بکنی */
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  /* فاصله‌ی دکمه‌ها کمتر */
+  .shec-shop-filters .sf-actions{ gap: 6px; }
+  .shec-shop-filters .shec-btn{ padding: 7px 12px; }
+}
+
+/* اختیاری: اسکرول‌بار ظریف‌تر در WebKit */
+.shec-shop-filters::-webkit-scrollbar{ height: 8px; }
+.shec-shop-filters::-webkit-scrollbar-thumb{
+  background: #e5e7eb; border-radius: 8px;
+}
+
+
+/* ===== Shopido Breadcrumb (RTL) ===== */
+.shopido-bc{
+  direction: rtl;
+  display: block;
+  border: 1px solid #e5e7eb;
+  background: #f8fafb;
+  color: #111827;
+  border-radius: 9999px;          /* کپسولی */
+  padding: 8px 14px;
+  line-height: 1.9;
+  box-shadow: 0 6px 18px rgba(0,0,0,.04);
+}
+
+.shopido-bc ol{
+  margin: 0; padding: 0;
+  list-style: none;
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 6px;
+}
+
+.shopido-bc li{ display: inline-flex; align-items: center; }
+
+.shopido-bc a{
+  color: #0f172a; text-decoration: none; font-weight: 700;
+}
+.shopido-bc a:hover{ color: #16a34a; }
+
+.shopido-bc .current{ color: #334155; font-weight: 800; }
+
+.shopido-bc .sep{
+  display: inline-block;
+  margin: 0 6px;
+  opacity: .6;
+  /* اگر خواستی جهت فلش را برای RTL برگردانی: */
+  /* transform: scaleX(-1); */
+}
+
+/* هماهنگی با خروجی Yoast/RankMath در صورت استفاده */
+.shopido-bc .yoast,
+.shopido-bc .rank-math-breadcrumb{
+  display: inline-block; width: 100%;
+}
+

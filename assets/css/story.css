@@ -1,0 +1,101 @@
+/* گرید هایلایت */
+.shopido-stories{display:flex;gap:14px;align-items:center;padding:12px 8px;overflow-x:auto;scrollbar-width:thin;direction:rtl}
+.shopido-story-item{flex:0 0 auto;text-align:center;width:86px;cursor:pointer;user-select:none;text-decoration:none;position:relative}
+.shopido-story-avatar{position:relative;width:74px;height:74px;border-radius:50%;padding:3px;background:conic-gradient(#f58529,#feda77,#dd2a7b,#8134af,#f58529);display:inline-flex;align-items:center;justify-content:center}
+.shopido-story-avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;background:#fff;border:2px solid #fff}
+.shopido-story-title{margin-top:6px;font-size:12px;color:#374151;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* بادج تعداد روی آواتار */
+.shopido-story-count{
+  position:absolute;right:-2px;top:-4px;
+  background:#111;color:#fff;font-size:10px;line-height:1;padding:4px 6px;border-radius:999px;border:1px solid #fff8;
+  box-shadow:0 2px 6px rgba(0,0,0,.25)
+}
+
+/* ویوِر */
+#shopido-story-viewer{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;z-index:99999}
+#shopido-story-viewer.open{display:block}
+.shopido-story-stage{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(420px,92vw);height:min(740px,90vh);border-radius:18px;overflow:hidden;background:#000;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+
+/* گرادیان بالای استیج (برای خوانایی پروگرس/هدر) */
+.shopido-topfade{
+  position:absolute;left:0;right:0;top:0;height:120px;z-index:4;
+  background:linear-gradient(180deg,rgba(0,0,0,.65),rgba(0,0,0,0))
+}
+
+.shopido-story-top{position:absolute;left:0;right:0;top:0;padding:10px 12px 6px;z-index:5}
+
+/* Progress شبیه اینستا */
+.shopido-progress{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px;direction:ltr}
+.shopido-bar{height:3px;background:rgba(255,255,255,.28);border-radius:3px;overflow:hidden}
+.shopido-bar i{
+  display:block;width:0%;height:100%;background:#fff;
+  transition:width .08s linear
+}
+
+.shopido-head{margin-top:8px;display:flex;align-items:center;gap:8px;color:#fff;font-size:14px;direction:rtl}
+.shopido-head .av{width:28px;height:28px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,.6)}
+.shopido-head .av img{width:100%;height:100%;object-fit:cover}
+.shopido-counter{background:rgba(0,0,0,.35);color:#fff;padding:4px 10px;border-radius:999px;margin-right:6px;font-size:12px}
+
+/* دکمه × گرد و تمیز */
+.shopido-close{
+  margin-right:auto;color:#fff;background:rgba(0,0,0,.45);
+  width:34px;height:34px;border-radius:50%;border:none;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);
+  box-shadow:0 6px 18px rgba(0,0,0,.25),inset 0 0 0 1px rgba(255,255,255,.12);
+  transition:transform .12s ease,background .15s ease
+}
+.shopido-close:hover{background:rgba(0,0,0,.65);transform:scale(1.06)}
+
+/* مدیا */
+.shopido-media{position:absolute;inset:0}
+.shopido-media img,.shopido-media video{width:100%;height:100%;object-fit:cover}
+
+/* دکمه پسندیدم شکیل */
+.shopido-actions{position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:10px;z-index:5}
+.shopido-like{
+  appearance:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-size:14px;
+  padding:10px 18px;border-radius:999px;color:#fff;background:linear-gradient(135deg,#f43f5e,#fb7185);
+  box-shadow:0 10px 30px rgba(244,63,94,.35),inset 0 0 0 1px rgba(255,255,255,.15);
+  transition:transform .12s ease,box-shadow .12s ease,background .2s ease
+}
+.shopido-like:hover{transform:translateY(-1px);box-shadow:0 14px 34px rgba(244,63,94,.45),inset 0 0 0 1px rgba(255,255,255,.2)}
+.shopido-like .heart{font-size:18px;filter:drop-shadow(0 0 6px rgba(255,255,255,.3))}
+.shopido-like.liked{background:linear-gradient(135deg,#16a34a,#22c55e)}
+
+/* فلش‌ها — راست=بعدی، چپ=قبلی */
+.shopido-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:40px;height:40px;border-radius:50%;border:none;cursor:pointer;
+  color:#fff;background:rgba(0,0,0,.35);backdrop-filter:blur(4px);
+  display:flex;align-items:center;justify-content:center;font-size:28px;line-height:1;
+  z-index:6;transition:background .15s ease,transform .12s ease
+}
+.shopido-nav:hover{background:rgba(0,0,0,.55);transform:translateY(-50%) scale(1.05)}
+.shopido-nav.next{
+  right:10px;         /* بعدی سمت راست */
+  transform:translateY(-50%) rotate(180deg); /* چرخش برای جهت درست */
+}
+.shopido-nav.prev{
+  left:10px;  
+transform:translateY(-50%) rotate(180deg);        /* قبلی سمت چپ */
+}
+
+/* تاپ‌زون‌های کلیک (نیمه‌ها) — راست=بعدی */
+.shopido-tapzone{position:absolute;top:0;bottom:0;width:50%;border:none;background:transparent;z-index:5;cursor:pointer}
+.shopido-tapzone.right{right:0} /* بعدی */
+.shopido-tapzone.left{left:0}   /* قبلی */
+
+/* حالت pause */
+#shopido-story-viewer.paused .shopido-media{filter:brightness(.9)}
+#shopido-story-viewer.paused .shopido-like{filter:grayscale(.1)}
+
+/* ریسپانسیو */
+@media (max-width:420px){
+  .shopido-story-stage{width:94vw;height:84vh;border-radius:14px}
+  .shopido-head{font-size:13px}
+  .shopido-close{width:32px;height:32px}
+  .shopido-nav{width:36px;height:36px;font-size:26px}
+  .shopido-actions{bottom:10px}
+}
