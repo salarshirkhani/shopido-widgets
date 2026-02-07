@@ -150,7 +150,7 @@ add_action('elementor/widgets/register', function($widgets_manager){
         'class-shopido-ticker-carousel.php', // Ticker Carousel (جدید)
         'class-shopido-counter.php',
         'class-shopido-pricing.php',
-        'class-shopido-faq-accordion.php'
+        'class-shopido-faq-accordion.php',
     ];
 
     foreach ($files as $file) {
@@ -187,7 +187,7 @@ add_action('elementor/widgets/register', function($widgets_manager){
         $widgets_manager->register( new \Shopido_Pricing() );
     }
     if ( class_exists('\Shopido_Pricing') ) {
-        $widgets_manager->register( new \Shopido_Pricing() );
+        $widgets_manager->register( new \Shopido_FAQ_Accordion() );
     }
 
 });
