@@ -6,20 +6,27 @@
     const items = Array.from(root.querySelectorAll(".shopido-faq-item"));
 
     function setPanelHeight(item, open) {
-      const panel = item.querySelector(".shopido-faq-panel");
-      if (!panel) return;
+    const panel = item.querySelector(".shopido-faq-panel");
+    if (!panel) return;
 
-      if (open) {
+    if (open) {
         panel.hidden = false;
         panel.style.maxHeight = panel.scrollHeight + "px";
-      } else {
+    } else {
+        // اول ارتفاع فعلی رو ست می‌کنیم، بعد صفرش می‌کنیم تا ترنزیشن رخ بده
         panel.style.maxHeight = panel.scrollHeight + "px";
         requestAnimationFrame(() => {
-          panel.style.maxHeight = "0px";
-          panel.hidden = true;
+        panel.style.maxHeight = "0px";
         });
-      }
+        // بعد از پایان ترنزیشن hidden کن
+        const onEnd = () => {
+        panel.hidden = true;
+        panel.removeEventListener("transitionend", onEnd);
+        };
+        panel.addEventListener("transitionend", onEnd);
     }
+    }
+
 
     // initial heights
     items.forEach((item) => {

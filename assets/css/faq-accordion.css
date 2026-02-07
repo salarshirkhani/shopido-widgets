@@ -1,88 +1,112 @@
+/* Wrapper (همون بک‌گراند خاکستری روشن دور لیست) */
 .shopido-faq{
   width: 100%;
+  background: #f5f5f5;
   border-radius: 14px;
-  background: #f4f3f1;
+  padding: 14px;
 }
 
+/* هر ردیف مثل کارت جدا */
 .shopido-faq-item{
-  background: #f7f6f4;
+  background: #ffffff;
   border-radius: 12px;
   overflow: hidden;
+  margin-bottom: 12px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.03);
+}
+.shopido-faq-item:last-child{
+  margin-bottom: 0;
 }
 
-.shopido-faq-item + .shopido-faq-item{
-  border-top: 2px solid #ffffff;
-}
-
+/* Header row */
+/*
+  نکته کلیدی برای شباهت به فیگما:
+  - آیکن باید سمت چپ باشه حتی وقتی صفحه RTLه
+  راه‌حل: direction: ltr روی دکمه، و دوباره RTL روی متن سوال.
+*/
 .shopido-faq-header{
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; /* RTL: آیکن سمت چپ، متن سمت راست خودش درست میشه با direction صفحه */
-  text-align: right;
   border: 0;
   background: transparent;
   cursor: pointer;
-  padding: 18px;
-  gap: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding: 18px 18px;
+
+  direction: ltr; /* باعث میشه آیکن (اول) سمت چپ قرار بگیره */
 }
 
-.shopido-faq-question{
-  flex: 1;
-  font-weight: 600;
-  line-height: 1.7;
-  color: #222223;
-}
-
+/* آیکن + / − */
 .shopido-faq-icon{
   width: 26px;
   height: 26px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #222223;
-  font-size: 18px;
-  flex: 0 0 26px;
-}
 
+  font-size: 18px;
+  line-height: 1;
+  color: #111;
+
+  flex: 0 0 26px;
+  margin-right: 14px; /* چون direction:ltr شده */
+}
 .shopido-faq-icon::before{
   content: "+";
-  line-height: 1;
 }
-
 .shopido-faq-header[aria-expanded="true"] .shopido-faq-icon::before{
   content: "−";
 }
 
-.shopido-faq-panel{
-  padding: 0 0 16px 0;
-}
+/* متن سوال */
+.shopido-faq-question{
+  flex: 1;
+  direction: rtl;     /* متن فارسی درست */
+  text-align: right;  /* دقیقاً مثل فیگما */
 
-.shopido-faq-answer{
-  padding: 0 18px 18px 18px;
-  color: #3a3a3a;
-  line-height: 2;
   font-size: 14px;
+  font-weight: 600;
+  color: #222;
+  line-height: 1.9;
 }
 
-/* انیمیشن نرم */
+/* پنل پاسخ */
 .shopido-faq-panel{
   overflow: hidden;
   max-height: 0;
-  transition: max-height 280ms ease;
+  transition: max-height 260ms ease;
 }
 
+.shopido-faq-answer{
+  direction: rtl;
+  text-align: right;
+
+  padding: 0 18px 18px 18px;
+  font-size: 13px;
+  color: #5a5a5a;
+  line-height: 2.1;
+}
+
+/* وقتی بازه */
 .shopido-faq-item.is-open .shopido-faq-panel{
-  max-height: 999px; /* توسط JS دقیق‌تر میشه */
+  max-height: 999px; /* JS دقیقش می‌کنه */
 }
 
-/* حالت فوکوس برای دسترسی‌پذیری */
+/* جداکننده ظریف بین سوال و جواب (فقط وقتی بازه) */
+.shopido-faq-item.is-open .shopido-faq-answer{
+  border-top: 1px solid rgba(0,0,0,0.06);
+  padding-top: 14px;
+}
+
+/* فوکوس */
 .shopido-faq-header:focus{
   outline: none;
 }
-
 .shopido-faq-header:focus-visible{
-  outline: 2px solid rgba(0,0,0,0.2);
+  outline: 2px solid rgba(0,0,0,0.15);
   outline-offset: 2px;
   border-radius: 10px;
 }
