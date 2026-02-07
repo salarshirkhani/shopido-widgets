@@ -116,6 +116,10 @@ add_action('wp_enqueue_scripts', function(){
     // pricing
     $reg_css('shopido-pricing', 'pricing.css');
     $reg_js ('shopido-pricing', 'pricing.js', ['jquery']);
+
+    // faq-accordion
+    $reg_css('faq-accordion', 'faq-accordion.css');
+    $reg_js ('faq-accordion', 'faq-accordion.js', ['jquery']);
 });
 
 # -------------------------------------------------
@@ -145,7 +149,8 @@ add_action('elementor/widgets/register', function($widgets_manager){
         'class-ajax-search.php',             // Ajax Search
         'class-shopido-ticker-carousel.php', // Ticker Carousel (جدید)
         'class-shopido-counter.php',
-        'class-shopido-pricing.php'
+        'class-shopido-pricing.php',
+        'class-shopido-faq-accordion.php'
     ];
 
     foreach ($files as $file) {
@@ -177,6 +182,9 @@ add_action('elementor/widgets/register', function($widgets_manager){
     }
     if ( class_exists('\Shopido_Counter') ) {
         $widgets_manager->register( new \Shopido_Counter() );
+    }
+    if ( class_exists('\Shopido_Pricing') ) {
+        $widgets_manager->register( new \Shopido_Pricing() );
     }
     if ( class_exists('\Shopido_Pricing') ) {
         $widgets_manager->register( new \Shopido_Pricing() );
