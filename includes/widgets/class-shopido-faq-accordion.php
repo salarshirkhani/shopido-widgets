@@ -19,7 +19,7 @@ class Shopido_FAQ_Accordion extends Widget_Base {
 	}
 
 	public function get_categories() {
-		return [ 'shopido' ]; // مطابق دسته‌ای که در init.php ساختی
+		return [ 'shopido' ]; 
 	}
 
 	public function get_style_depends() {

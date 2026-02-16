@@ -83,7 +83,7 @@ add_action('wp_enqueue_scripts', function(){
     };
 
     // Stories (اینستاگرامی)
-    $reg_css('shopido-story',        'story.css', ['swiper']);
+    $reg_css('shopido-story', 'story.css', ['swiper']);
     $reg_js ('shopido-story', 'story.js',  ['jquery']);
 
     // Read More (نمونه قدیمی)
@@ -118,8 +118,12 @@ add_action('wp_enqueue_scripts', function(){
     $reg_js ('shopido-pricing', 'pricing.js', ['jquery']);
 
     // faq-accordion
-    $reg_css('faq-accordion', 'faq-accordion.css');
-    $reg_js ('faq-accordion', 'faq-accordion.js', ['jquery']);
+    $reg_css('shopido-faq-accordion', 'faq-accordion.css');
+    $reg_js ('shopido-faq-accordion', 'faq-accordion.js', ['jquery']);
+    
+    // testimonials
+    $reg_css('shopido-testimonials', 'testimonials.css');
+    $reg_js ('shopido-testimonials', 'testimonials.js', ['jquery']);
 });
 
 # -------------------------------------------------
@@ -145,12 +149,13 @@ add_action('elementor/widgets/register', function($widgets_manager){
         'class-shopido-breadcrumb.php',
         'class-shopido-product-carousel.php',
         'class-shopido-tabbed-product-carousel.php',
-        'class-stories.php',                 // Stories (اینستاگرامی)
+        'class-stories.php',                
         'class-ajax-search.php',             // Ajax Search
-        'class-shopido-ticker-carousel.php', // Ticker Carousel (جدید)
+        'class-shopido-ticker-carousel.php', // Ticker Carousel 
         'class-shopido-counter.php',
         'class-shopido-pricing.php',
         'class-shopido-faq-accordion.php',
+        'class-shopido-testimonials.php',
     ];
 
     foreach ($files as $file) {
@@ -189,5 +194,15 @@ add_action('elementor/widgets/register', function($widgets_manager){
     if ( class_exists('\Shopido_Pricing') ) {
         $widgets_manager->register( new \Shopido_FAQ_Accordion() );
     }
-
+    if ( class_exists('\Shopido_Testimonials') ) {
+        $widgets_manager->register( new \Shopido_Testimonials() );
+    }
 });
+
+add_action('wp_head', function(){
+  if ( empty($GLOBALS['shpd_testimonials_paging']) ) return;
+  $p = $GLOBALS['shpd_testimonials_paging'];
+  if (!empty($p['prev'])) echo '<link rel="prev" href="'.esc_url($p['prev']).'">'."\n";
+  if (!empty($p['next'])) echo '<link rel="next" href="'.esc_url($p['next']).'">'."\n";
+}, 1);
+
